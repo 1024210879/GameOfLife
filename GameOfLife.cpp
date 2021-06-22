@@ -31,7 +31,7 @@ void GameOfLife::paintEvent(QPaintEvent *event)
         }
 
     static int counter = 0;
-    m_image.save(QString("%1/%2.jpg").arg(g_strSave).arg(QString::number(++counter)));
+    m_image.save(QString("%1/%2.bmp").arg(g_strSave).arg(QString::number(++counter)));
 
     QPainter painter2(this);
     painter2.drawImage(this->rect(), m_image);
