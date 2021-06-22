@@ -4,18 +4,23 @@
 #include <QWidget>
 #include <QTimer>
 #include <QPainter>
+#include <QDir>
 #include <time.h>
 #include <iostream>
+#include <QImage>
 
-static const int g_interval = 300;
+static const int g_randSeed = 10;
+static const int g_interval = 150;
 static const int g_canvasw = 600;
-static const int g_canvash = 300;
-static const int g_cellnx = 6;
-static const int g_cellny = 6;
+static const int g_canvash = 600;
+static const int g_cellnx = 300;
+static const int g_cellny = 300;
 static const int g_celln = g_cellnx * g_cellny;
 static const int g_cellw = g_canvasw / g_cellnx;
 static const int g_cellh = g_canvash / g_cellny;
 static const int g_offset[3] = { -1, 0, 1 };
+
+static QString g_strSave = "./output";
 
 enum IsAlive {
     DEAD  = 0,
@@ -40,6 +45,7 @@ protected:
 private:
     Ui::GameOfLife *ui;
     QTimer m_timer;
+    QImage m_image;
 
     typedef struct {
         IsAlive cur;
@@ -49,6 +55,7 @@ private:
 
 private:
     void init();
+    void createDir();
 
 private slots:
     void updateCells();
